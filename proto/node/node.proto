@@ -1,0 +1,25 @@
+syntax = "proto3";
+package greenbahar.node;
+
+//import "google/api/annotations.proto";
+
+option go_package ="github.com/greenbahar/node-system/types/node";
+
+message ActiveRangeRequest {
+    uint64 startHeight = 1;
+}
+
+message ActiveRangeResponse {
+    repeated Block blocks = 1;
+}
+
+message Block {
+    uint64 blockHeight = 1;
+    string block = 2;
+}
+
+service Query {
+    rpc RangeBlockRequest(ActiveRangeRequest) returns (ActiveRangeResponse) {
+//        option (google.api.http).get = "/greenbahar/node/block-height";
+    };
+}
